@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Direktori ID DELIMa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+  
+  <div id="app"></div>
+
+  <script>
+    // Data senarai murid Tahun 2026
+    const mockStudents = [
+      { id: 1, name: "HANNA LUMI RAJA BINTI ABDULLAH", class: "1BD", email: "m-241302237852@moe-dl.edu.my", password: "skpkhanna" },
+      { id: 2, name: "FAVIAN CARLOS MELCOM", class: "1BD", email: "m-251302331663@moe-dl.edu.my", password: "skpkfavian" },
+      { id: 3, name: "RAYMOND ACHO SAW CHEN YEE", class: "1BD", email: "raymondachosawchenyee@moe-dl.edu.my", password: "skpkraymond" },
+      { id: 4, name: "DARREN KUAN SHENG WEI", class: "1BP", email: "m-241301380901@moe-dl.edu.my", password: "skpk darren" },
+      { id: 5, name: "HAYLEY BONG XIN RUI", class: "1BP", email: "m-231303017921@moe-dl.edu.my", password: "skpkhayley" },
+      { id: 6, name: "MOHAMAD MIKAEL BIN MOHAMAD MUSTAPA", class: "1BP", email: "m-251302312999@moe-dl.edu.my", password: "skpkmikael" },
+      { id: 7, name: "MOHAMMAD AZMAN SHAH BIN MOHAMMAD AZREEN SHAH", class: "1BP", email: "m-251302313074@moe-dl.edu.my", password: "skpkazman" },
+      { id: 8, name: "MUHAMMAD IZZ NAUFAL BIN ABDULLAH", class: "1BP", email: "m-241302237907@moe-dl.edu.my", password: "skpkizznaufal" },
+      { id: 9, name: "ADHAM SHARIF BIN ADANAN", class: "1BP", email: "adhamsharif.adanan@moe-dl.edu.my", password: "skpkadham" },
+      { id: 10, name: "AISYAH ARISSA BINTI MASHRIE", class: "1BP", email: "aisyaharissa.mashrie@moe-dl.edu.my", password: "skpkarissa" },
+      { id: 11, name: "AISYAH AZZAHRA BINTI AZLAN", class: "1BP", email: "aisyahazzahra.azlan@moe-dl.edu.my", password: "skpkazzahra" },
+      { id: 12, name: "DAPHNE GRACE ANAK SEBASTIAN", class: "1BP", email: "daphnegrace.sebastian@moe-dl.edu.my", password: "skpkdaphne" },
+      { id: 13, name: "EISSA ZACHRY BIN MOHAMMAD NASRIN", class: "1BP", email: "eissazachry.mohammadnasrin@moe-dl.edu.my", password: "skpkeissa" },
+      { id: 14, name: "EMANUEL NGAU GARY LEJAU", class: "1BP", email: "emanuelngaugarylejau@moe-dl.edu.my", password: "skpkemanuel" },
+      { id: 15, name: "JONATHAN CHIN EN ZE", class: "1BP", email: "jonathanchinenze@moe-dl.edu.my", password: "skpkjonathan" },
+      { id: 16, name: "LUTH IMTIYYAZ BIN MOHD KHAIROOL IFWAT", class: "1BP", email: "luthimtiyyaz.mohdkhairoolifwat@moe-dl.edu.my", password: "skpkluth" },
+      { id: 17, name: "MUHAMMAD ZULQARNAIN BIN MUHAMMAD HAZIM", class: "1BP", email: "muhammadzulqarnain.muhammadhazim@moe-dl.edu.my", password: "skpksulqarnain" },
+      { id: 18, name: "RAFAEL EDEN PAREN FRANKIE", class: "1BP", email: "rafaeledenparenfrankie@moe-dl.edu.my", password: "skpkrafael" },
+      { id: 19, name: "RENNY TAMANG WEE WEN HUI", class: "1BP", email: "rennytamangweewenhui@moe-dl.edu.my", password: "skpkrenny" },
+      { id: 20, name: "ALVIEN CORNELIUS ANAK ANTHONY", class: "2BP", email: "m-15898524@moe-dl.edu.my", password: "skpkalvien" },
+      { id: 21, name: "DANISH IMAN BIN MAZUAN", class: "2BP", email: "m-15868874@moe-dl.edu.my", password: "skpkdanish" },
+      { id: 22, name: "IQBAL RAID BIN MOHAMAD RASHID", class: "2BP", email: "m-241302246594@moe-dl.edu.my", password: "skpkiqbal" },
+      { id: 23, name: "RAPHAEL RAY RIO", class: "2BP", email: "m-15868889@moe-dl.edu.my", password: "skpkraphael" },
+      { id: 24, name: "RAZAN ELIZABETH BINTI FARIQ", class: "2BP", email: "m-15868919@moe-dl.edu.my", password: "skpkrazan" },
+      { id: 25, name: "SHERRAPHYNNA LEANNE BINTANG ANAK ALVIN LU NGEN", class: "2BP", email: "m-15868979@moe-dl.edu.my", password: "skpksherraphynna" },
+      { id: 26, name: "ABANG BUKHORI HAKIMI BIN ABANG ABDUL MUIZZ", class: "2BP", email: "m-15883500@moe-dl.edu.my", password: "skpkabang" },
+      { id: 27, name: "AHMAD ZHARIFF BIN ZURY ZAMRIL", class: "2BP", email: "m-15884139@moe-dl.edu.my", password: "skpkahmad" },
+      { id: 28, name: "AISY SYUHAIMEIL BIN ABDULLAH", class: "2BP", email: "m-241302237829@moe-dl.edu.my", password: "skpkaisy" },
+      { id: 29, name: "ARYAN NUFAEL BIN MUHAMMAD ASRI", class: "2BP", email: "m-251302628398@moe-dl.edu.my", password: "skpkaryan" },
+      { id: 30, name: "EL SHIRAZY BIN AZLAN", class: "2BP", email: "m-15884142@moe-dl.edu.my", password: "skpkshirazy" },
+      { id: 31, name: "NUH ADLI BIN FADZIL NOOR", class: "2BP", email: "m-15883819@moe-dl.edu.my", password: "skpknuhadli" },
+      { id: 32, name: "RIAZ ESHAL BIN MOHAMMAD SYAHIR", class: "2BP", email: "m-15883961@moe-dl.edu.my", password: "skpkriaz" },
+      { id: 33, name: "ALEXZANDER NGAOH ANAK MOSES KUDI", class: "3BD", email: "m-15613757@moe-dl.edu.my", password: "skpkalexzander" },
+      { id: 34, name: "NATALIE WEE YAN TONG", class: "3BD", email: "m-15613612@moe-dl.edu.my", password: "skpknatalie" },
+      { id: 35, name: "IVAN YOEL ANAK AUGUSTINE GILBERT", class: "3BP", email: "m-15608181@moe-dl.edu.my", password: "skpkivan" },
+      { id: 36, name: "MOHAMAD AIMAN ASHRAF BIN ROSLAN", class: "3BP", email: "m-15612344@moe-dl.edu.my", password: "skpkaiman" },
+      { id: 37, name: "MOHAMAD QAYYID QUZAER BIN KHAIRUL FADZLI", class: "3BP", email: "m-15612745@moe-dl.edu.my", password: "skpkqayyid" },
+      { id: 38, name: "MUHAMMAD AISY WAFIQ BIN JAIDI", class: "3BP", email: "m-15611947@moe-dl.edu.my", password: "skpkaisy" },
+      { id: 39, name: "SHAKEEL BISYARI BIN SHAHRIL", class: "3BP", email: "m-15613120@moe-dl.edu.my", password: "skpkshakeel" },
+      { id: 40, name: "THRIS TOH TERMANTOH", class: "3BP", email: "m-15613208@moe-dl.edu.my", password: "skpkthris" },
+      { id: 41, name: "BRANDON LIEW KA CHUN", class: "3BP", email: "brandonliewkachun@moe-dl.edu.my", password: "skpkbrandon" },
+      { id: 42, name: "ISABELL EVE WAN AJANG", class: "4BD", email: "m-15109432@moe-dl.edu.my", password: "skpkisabell" },
+      { id: 43, name: "IZZ IBTISAM BIN AHMAD MUJAHID", class: "4BD", email: "m-15107851@moe-dl.edu.my", password: "skpkibtisam" },
+      { id: 44, name: "IZZNURIN ATYA BINTI IZMET ISKANDAR", class: "4BD", email: "m-14590915@moe-dl.edu.my", password: "skpkatya" },
+      { id: 45, name: "IZZ DASUKI BIN ABDULLAH", class: "4BL", email: "m-15118574@moe-dl.edu.my", password: "skpkdasuki" },
+      { id: 46, name: "JULIANIE UNGAN ANING", class: "4BL", email: "m-15102282@moe-dl.edu.my", password: "skpkjulianie" },
+      { id: 47, name: "SAYF AALI DZIQRULLAH BIN SAIFUL", class: "4BL", email: "m-14889610@moe-dl.edu.my", password: "skpksayf" },
+      { id: 48, name: "FELIXSON MOSES ANAK JONATHAN SAGA", class: "4BL", email: "felixsonmoses.jonathansaga@moe-dl.edu.my", password: "skpkfelixson" },
+      { id: 49, name: "CASSANDRA MARIA JEGA ANAK SEMALIE", class: "4BP", email: "m-15109024@moe-dl.edu.my", password: "skpkcassandra" },
+      { id: 50, name: "HUMPHREY GRUNNER ANAK ANDREW LUANG", class: "4BP", email: "m-14838659@moe-dl.edu.my", password: "skpkhumphrey" },
+      { id: 51, name: "LING YEW KIAT", class: "4BP", email: "m-15107852@moe-dl.edu.my", password: "skpkling" },
+      { id: 52, name: "MCLAIRE NYARINE ANAK STEPHEN", class: "4BP", email: "m-14590916@moe-dl.edu.my", password: "skpkmclaire" },
+      { id: 53, name: "THESSA GOH YAN AI", class: "4BP", email: "thessagohyanai@moe-dl.edu.my", password: "skpkthessa" },
+      { id: 54, name: "DAREN TING TIAN ZJUN", class: "5BD", email: "m-15187916@moe-dl.edu.my", password: "skpkdaren" },
+      { id: 55, name: "HAIDIEL SHAHRY BIN SOFIZAN", class: "5BD", email: "m-13341319@moe-dl.edu.my", password: "skpkhaidiel" },
+      { id: 56, name: "AMSYAR AZWAR BIN AL- MALIK HUSSEIN", class: "5BP", email: "m-14590936@moe-dl.edu.my", password: "skpkamsyar" },
+      { id: 57, name: "ARYAN WONG BIN MOHD ASWAD WONG", class: "5BP", email: "m-14314487@moe-dl.edu.my", password: "skpkaryan" },
+      { id: 58, name: "DIONYSIUS DELROY ANAK RAYMOND", class: "5BP", email: "m-14590937@moe-dl.edu.my", password: "skpkdionysius" },
+      { id: 59, name: "NURUL JANNAH BINTI MINHAD", class: "5BP", email: "m-14590938@moe-dl.edu.my", password: "skpknurul" },
+      { id: 60, name: "SITI ARISSA AFIQAH BINTI MOHD. ISWAN", class: "5BP", email: "m-14590939@moe-dl.edu.my", password: "skpkarissa" },
+      { id: 61, name: "WEE YEE TIEN", class: "5BP", email: "m-15094321@moe-dl.edu.my", password: "skpkwee" },
+      { id: 62, name: "ZAIM ZAHRAN BIN ZAINUDDIN", class: "5BP", email: "m-14183220@moe-dl.edu.my", password: "skpkzaim" },
+      { id: 63, name: "ATHENA KHO XUAN", class: "6BD", email: "m-13341314@moe-dl.edu.my", password: "skpkathena" },
+      { id: 64, name: "MIRZHAN HAMIZI BIN MOHAMMAD FAIZAL", class: "6BD", email: "m-13250092@moe-dl.edu.my", password: "skpkmirzhan" },
+      { id: 65, name: "EVANGELINE KAREN PAULUS", class: "6BP", email: "m-13676770@moe-dl.edu.my", password: "skpkavangeline" },
+      { id: 66, name: "IAN MCKENZIE ANAK MAT", class: "6BP", email: "m-13677411@moe-dl.edu.my", password: "skpkian" },
+      { id: 67, name: "IHYA ZAFIRAH BINTI HANAFIE", class: "6BP", email: "m-13680259@moe-dl.edu.my", password: "skpkihya" },
+      { id: 68, name: "JOSELINE JONG SHI YING", class: "6BP", email: "m-13919850@moe-dl.edu.my", password: "skpkjoselinejong" },
+      { id: 69, name: "MOHAMMAD IZZUANDIE BIN ABDULLAH", class: "6BP", email: "m-13677816@moe-dl.edu.my", password: "skpkizzuandie" },
+      { id: 70, name: "NUR AINA BINTI BARAHIM", class: "6BP", email: "m-13882842@moe-dl.edu.my", password: "skpkaina" },
+      { id: 71, name: "SURAIYA KHAIRINA BINTI KHAIRUL", class: "6BP", email: "m-14026036@moe-dl.edu.my", password: "skpksuraiya" },
+      { id: 72, name: "GRAHAM TEO TING HAN", class: "PRA", email: "m-251302313059@moe-dl.edu.my", password: "skpkgraham" },
+      { id: 73, name: "AAYAN HANS BIN ISMAILY", class: "PRA", email: "aayanhans.ismaily@moe-dl.edu.my", password: "skpkaayan" },
+      { id: 74, name: "DAISY TANG EE XI", class: "PRA", email: "daisytangeexi@moe-dl.edu.my", password: "skpkdaisy" },
+      { id: 75, name: "ISLEY NGIENG SEE EN", class: "PRA", email: "isleyngiengseeen@moe-dl.edu.my", password: "skpkisley" },
+      { id: 76, name: "MUHAMMAD YUNUS BIN MUHAMMAD HAZIM", class: "PRA", email: "muhammadyunus.muhammadhazim@moe-dl.edu.my", password: "skpkyunus" },
+      { id: 77, name: "NOAH ASHRAF BIN KHAIRUL NIZZAL", class: "PRA", email: "noahashraf.khairulnizzal@moe-dl.edu.my", password: "skpknoah" },
+      { id: 78, name: "ZARA BINTI MOHAMAD SUHAIMI", class: "PRA", email: "zara.mohamadsuhaimi@moe-dl.edu.my", password: "skpkzara" },
+      { id: 79, name: "ZIA ZHUFAIRAH BINTI ZAHIRUDDIN", class: "PRA", email: "ziazhufairah.zahiruddin@moe-dl.edu.my", password: "skpkzia" }
+    ];
+
+    let isLoggedIn = false;
+    let searchQuery = "";
+    
+    // KOD AKSES TELAH DIKEMAS KINI DI SINI
+    const SECRET_PIN = "YBA4112";
+
+    const appContainer = document.getElementById('app');
+
+    function showLogin() {
+      appContainer.innerHTML = `
+        <div class="min-h-screen bg-blue-50 flex items-center justify-center p-4">
+          <div class="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 space-y-6 border-t-4 border-blue-500">
+            <div class="text-center">
+              <div class="flex justify-center mb-4">
+                <img src="logo.png" alt="Logo SKPK Miri" class="h-24 w-24 object-contain drop-shadow-sm" 
+                  onerror="this.onerror=null; this.outerHTML='<div class=\\'bg-blue-100 p-4 rounded-full\\'><i data-lucide=\\'graduation-cap\\' class=\\'h-12 w-12 text-blue-600\\'></i></div>'">
+              </div>
+              <h1 class="text-2xl font-bold text-gray-800">Direktori ID DELIMa</h1>
+              <p class="text-sm text-gray-500 mt-2">SK Pendidikan Khas Miri<br/>Akses khas untuk Guru dan Ibu Bapa sahaja.</p>
+            </div>
+            
+            <form id="loginForm" class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Kod Sekolah</label>
+                <input type="password" id="pinInput" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Masukkan kod sekolah" required>
+              </div>
+              
+              <p id="loginError" class="text-red-500 text-sm hidden">Kod tidak sah. Sila cuba lagi.</p>
+              
+              <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors shadow-md flex justify-center items-center gap-2">
+                Log Masuk <i data-lucide="check" class="h-5 w-5"></i>
+              </button>
+            </form>
+
+            <div class="bg-yellow-50 rounded-lg p-4 flex gap-3 text-sm text-yellow-800">
+              <i data-lucide="info" class="h-5 w-5 flex-shrink-0"></i>
+              <p>Nota: Aplikasi ini mengandungi maklumat sensitif. Sila pastikan skrin anda tidak dilihat oleh pihak yang tidak berkenaan.</p>
+            </div>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+
+      document.getElementById('loginForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const pin = document.getElementById('pinInput').value;
+        if (pin === SECRET_PIN) {
+          isLoggedIn = true;
+          showDashboard();
+        } else {
+          document.getElementById('loginError').classList.remove('hidden');
+        }
+      });
+    }
+
+    function showDashboard() {
+      appContainer.innerHTML = `
+        <div class="min-h-screen bg-gray-50">
+          <header class="bg-white shadow-sm sticky top-0 z-10">
+            <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo SKPK Miri" class="h-12 w-12 object-contain drop-shadow-sm" 
+                  onerror="this.onerror=null; this.outerHTML='<div class=\\'bg-blue-600 p-2 rounded-lg\\'><i data-lucide=\\'graduation-cap\\' class=\\'h-6 w-6 text-white\\'></i></div>'">
+                <div>
+                  <h1 class="text-xl font-bold text-gray-800">Direktori ID DELIMa</h1>
+                  <p class="text-xs text-gray-500">SK Pendidikan Khas Miri</p>
+                </div>
+              </div>
+              <button id="logoutBtn" class="text-gray-500 hover:text-red-600 hover:bg-red-50 px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium">
+                <i data-lucide="log-out" class="h-4 w-4"></i> Log Keluar
+              </button>
+            </div>
+          </header>
+
+          <main class="max-w-5xl mx-auto px-4 py-8">
+            <div class="bg-white rounded-xl shadow-sm p-2 mb-6 border border-gray-100 flex items-center focus-within:ring-2 focus-within:ring-blue-500 transition-all">
+              <div class="pl-3 pr-2 text-gray-400">
+                <i data-lucide="search" class="h-5 w-5"></i>
+              </div>
+              <input type="text" id="searchInput" placeholder="Cari nama murid atau nama kelas (Cth: PRA)..." class="w-full py-3 px-2 bg-transparent border-none focus:outline-none text-gray-700 placeholder-gray-400">
+              <button id="clearSearchBtn" class="px-4 text-gray-400 hover:text-gray-600 hidden">✕</button>
+            </div>
+            
+            <div id="studentList" class="space-y-4">
+            </div>
+          </main>
+        </div>
+      `;
+      lucide.createIcons();
+
+      document.getElementById('logoutBtn').addEventListener('click', () => {
+        isLoggedIn = false;
+        searchQuery = "";
+        showLogin();
+      });
+
+      const searchInput = document.getElementById('searchInput');
+      const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        if (searchQuery) {
+          clearSearchBtn.classList.remove('hidden');
+        } else {
+          clearSearchBtn.classList.add('hidden');
+        }
+        renderStudentList();
+      });
+
+      clearSearchBtn.addEventListener('click', () => {
+        searchQuery = "";
+        searchInput.value = "";
+        clearSearchBtn.classList.add('hidden');
+        renderStudentList();
+      });
+
+      renderStudentList();
+    }
+
+    function renderStudentList() {
+      const listContainer = document.getElementById('studentList');
+      
+      const filteredStudents = mockStudents.filter(student => 
+        student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        student.class.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+      if (filteredStudents.length > 0) {
+        let htmlContent = '';
+        filteredStudents.forEach(student => {
+          const classBadge = student.class !== "-" 
+            ? `<span class="inline-block mt-1 px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">Kelas: ${student.class}</span>` 
+            : '';
+
+          htmlContent += `
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+              <div class="p-5 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                <div class="flex-1">
+                  <h3 class="text-lg font-semibold text-gray-800">${student.name}</h3>
+                  ${classBadge}
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                  <div class="bg-gray-50 rounded-lg p-3 border border-gray-200 flex-1 sm:w-64">
+                    <p class="text-xs text-gray-500 font-medium mb-1">Emel (ID DELIMa)</p>
+                    <div class="flex justify-between items-center gap-2">
+                      <span class="font-mono text-sm text-gray-700 truncate">${student.email}</span>
+                      <button onclick="copyToClipboard('${student.email}', this)" class="p-1.5 text-blue-600 hover:bg-blue-100 rounded-md transition-colors" title="Salin Emel">
+                        <i data-lucide="copy" class="h-4 w-4"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 rounded-lg p-3 border border-gray-200 flex-1 sm:w-64">
+                    <p class="text-xs text-gray-500 font-medium mb-1">Kata Laluan</p>
+                    <div class="flex justify-between items-center gap-2">
+                      <span class="font-mono text-sm text-gray-700 truncate">${student.password}</span>
+                      <button onclick="copyToClipboard('${student.password}', this)" class="p-1.5 text-blue-600 hover:bg-blue-100 rounded-md transition-colors" title="Salin Kata Laluan">
+                        <i data-lucide="copy" class="h-4 w-4"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        listContainer.innerHTML = htmlContent;
+      } else {
+        listContainer.innerHTML = `
+          <div class="text-center py-12 bg-white rounded-xl border border-gray-200 border-dashed">
+            <p class="text-gray-500">Tiada rekod murid dijumpai untuk carian "${searchQuery}"</p>
+          </div>
+        `;
+      }
+      lucide.createIcons();
+    }
+
+    window.copyToClipboard = function(text, btnElement) {
+      const el = document.createElement('textarea');
+      el.value = text;
+      document.body.appendChild(el);
+      el.select();
+      try {
+        document.execCommand('copy');
+        const originalHtml = btnElement.innerHTML;
+        btnElement.innerHTML = '<i data-lucide="check" class="h-4 w-4 text-green-600"></i>';
+        lucide.createIcons();
+        
+        setTimeout(() => {
+          btnElement.innerHTML = originalHtml;
+          lucide.createIcons();
+        }, 2000);
+      } catch (err) {
+        console.error('Gagal menyalin teks', err);
+        alert('Gagal menyalin. Sila salin secara manual.');
+      }
+      document.body.removeChild(el);
+    };
+
+    showLogin();
+  </script>
+</body>
+</html>
