@@ -6,94 +6,54 @@
   <title>Direktori ID DELIMa</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Memuatkan PapaParse untuk membaca pautan CSV secara 'live' -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 </head>
 <body class="bg-gray-50 font-sans text-gray-800">
   
   <div id="app"></div>
 
   <script>
-    // Data senarai murid Tahun 2026
-    const mockStudents = [
-      { id: 1, name: "HANNA LUMI RAJA BINTI ABDULLAH", class: "1BD", email: "m-241302237852@moe-dl.edu.my", password: "skpkhanna" },
-      { id: 2, name: "FAVIAN CARLOS MELCOM", class: "1BD", email: "m-251302331663@moe-dl.edu.my", password: "skpkfavian" },
-      { id: 3, name: "RAYMOND ACHO SAW CHEN YEE", class: "1BD", email: "raymondachosawchenyee@moe-dl.edu.my", password: "skpkraymond" },
-      { id: 4, name: "DARREN KUAN SHENG WEI", class: "1BP", email: "m-241301380901@moe-dl.edu.my", password: "skpk darren" },
-      { id: 5, name: "HAYLEY BONG XIN RUI", class: "1BP", email: "m-231303017921@moe-dl.edu.my", password: "skpkhayley" },
-      { id: 6, name: "MOHAMAD MIKAEL BIN MOHAMAD MUSTAPA", class: "1BP", email: "m-251302312999@moe-dl.edu.my", password: "skpkmikael" },
-      { id: 7, name: "MOHAMMAD AZMAN SHAH BIN MOHAMMAD AZREEN SHAH", class: "1BP", email: "m-251302313074@moe-dl.edu.my", password: "skpkazman" },
-      { id: 8, name: "MUHAMMAD IZZ NAUFAL BIN ABDULLAH", class: "1BP", email: "m-241302237907@moe-dl.edu.my", password: "skpkizznaufal" },
-      { id: 9, name: "ADHAM SHARIF BIN ADANAN", class: "1BP", email: "adhamsharif.adanan@moe-dl.edu.my", password: "skpkadham" },
-      { id: 10, name: "AISYAH ARISSA BINTI MASHRIE", class: "1BP", email: "aisyaharissa.mashrie@moe-dl.edu.my", password: "skpkarissa" },
-      { id: 11, name: "AISYAH AZZAHRA BINTI AZLAN", class: "1BP", email: "aisyahazzahra.azlan@moe-dl.edu.my", password: "skpkazzahra" },
-      { id: 12, name: "DAPHNE GRACE ANAK SEBASTIAN", class: "1BP", email: "daphnegrace.sebastian@moe-dl.edu.my", password: "skpkdaphne" },
-      { id: 13, name: "EISSA ZACHRY BIN MOHAMMAD NASRIN", class: "1BP", email: "eissazachry.mohammadnasrin@moe-dl.edu.my", password: "skpkeissa" },
-      { id: 14, name: "EMANUEL NGAU GARY LEJAU", class: "1BP", email: "emanuelngaugarylejau@moe-dl.edu.my", password: "skpkemanuel" },
-      { id: 15, name: "JONATHAN CHIN EN ZE", class: "1BP", email: "jonathanchinenze@moe-dl.edu.my", password: "skpkjonathan" },
-      { id: 16, name: "LUTH IMTIYYAZ BIN MOHD KHAIROOL IFWAT", class: "1BP", email: "luthimtiyyaz.mohdkhairoolifwat@moe-dl.edu.my", password: "skpkluth" },
-      { id: 17, name: "MUHAMMAD ZULQARNAIN BIN MUHAMMAD HAZIM", class: "1BP", email: "muhammadzulqarnain.muhammadhazim@moe-dl.edu.my", password: "skpksulqarnain" },
-      { id: 18, name: "RAFAEL EDEN PAREN FRANKIE", class: "1BP", email: "rafaeledenparenfrankie@moe-dl.edu.my", password: "skpkrafael" },
-      { id: 19, name: "RENNY TAMANG WEE WEN HUI", class: "1BP", email: "rennytamangweewenhui@moe-dl.edu.my", password: "skpkrenny" },
-      { id: 20, name: "ALVIEN CORNELIUS ANAK ANTHONY", class: "2BP", email: "m-15898524@moe-dl.edu.my", password: "skpkalvien" },
-      { id: 21, name: "DANISH IMAN BIN MAZUAN", class: "2BP", email: "m-15868874@moe-dl.edu.my", password: "skpkdanish" },
-      { id: 22, name: "IQBAL RAID BIN MOHAMAD RASHID", class: "2BP", email: "m-241302246594@moe-dl.edu.my", password: "skpkiqbal" },
-      { id: 23, name: "RAPHAEL RAY RIO", class: "2BP", email: "m-15868889@moe-dl.edu.my", password: "skpkraphael" },
-      { id: 24, name: "RAZAN ELIZABETH BINTI FARIQ", class: "2BP", email: "m-15868919@moe-dl.edu.my", password: "skpkrazan" },
-      { id: 25, name: "SHERRAPHYNNA LEANNE BINTANG ANAK ALVIN LU NGEN", class: "2BP", email: "m-15868979@moe-dl.edu.my", password: "skpksherraphynna" },
-      { id: 26, name: "ABANG BUKHORI HAKIMI BIN ABANG ABDUL MUIZZ", class: "2BP", email: "m-15883500@moe-dl.edu.my", password: "skpkabang" },
-      { id: 27, name: "AHMAD ZHARIFF BIN ZURY ZAMRIL", class: "2BP", email: "m-15884139@moe-dl.edu.my", password: "skpkahmad" },
-      { id: 28, name: "AISY SYUHAIMEIL BIN ABDULLAH", class: "2BP", email: "m-241302237829@moe-dl.edu.my", password: "skpkaisy" },
-      { id: 29, name: "ARYAN NUFAEL BIN MUHAMMAD ASRI", class: "2BP", email: "m-251302628398@moe-dl.edu.my", password: "skpkaryan" },
-      { id: 30, name: "EL SHIRAZY BIN AZLAN", class: "2BP", email: "m-15884142@moe-dl.edu.my", password: "skpkshirazy" },
-      { id: 31, name: "NUH ADLI BIN FADZIL NOOR", class: "2BP", email: "m-15883819@moe-dl.edu.my", password: "skpknuhadli" },
-      { id: 32, name: "RIAZ ESHAL BIN MOHAMMAD SYAHIR", class: "2BP", email: "m-15883961@moe-dl.edu.my", password: "skpkriaz" },
-      { id: 33, name: "ALEXZANDER NGAOH ANAK MOSES KUDI", class: "3BD", email: "m-15613757@moe-dl.edu.my", password: "skpkalexzander" },
-      { id: 34, name: "NATALIE WEE YAN TONG", class: "3BD", email: "m-15613612@moe-dl.edu.my", password: "skpknatalie" },
-      { id: 35, name: "IVAN YOEL ANAK AUGUSTINE GILBERT", class: "3BP", email: "m-15608181@moe-dl.edu.my", password: "skpkivan" },
-      { id: 36, name: "MOHAMAD AIMAN ASHRAF BIN ROSLAN", class: "3BP", email: "m-15612344@moe-dl.edu.my", password: "skpkaiman" },
-      { id: 37, name: "MOHAMAD QAYYID QUZAER BIN KHAIRUL FADZLI", class: "3BP", email: "m-15612745@moe-dl.edu.my", password: "skpkqayyid" },
-      { id: 38, name: "MUHAMMAD AISY WAFIQ BIN JAIDI", class: "3BP", email: "m-15611947@moe-dl.edu.my", password: "skpkaisy" },
-      { id: 39, name: "SHAKEEL BISYARI BIN SHAHRIL", class: "3BP", email: "m-15613120@moe-dl.edu.my", password: "skpkshakeel" },
-      { id: 40, name: "THRIS TOH TERMANTOH", class: "3BP", email: "m-15613208@moe-dl.edu.my", password: "skpkthris" },
-      { id: 41, name: "BRANDON LIEW KA CHUN", class: "3BP", email: "brandonliewkachun@moe-dl.edu.my", password: "skpkbrandon" },
-      { id: 42, name: "ISABELL EVE WAN AJANG", class: "4BD", email: "m-15109432@moe-dl.edu.my", password: "skpkisabell" },
-      { id: 43, name: "IZZ IBTISAM BIN AHMAD MUJAHID", class: "4BD", email: "m-15107851@moe-dl.edu.my", password: "skpkibtisam" },
-      { id: 44, name: "IZZNURIN ATYA BINTI IZMET ISKANDAR", class: "4BD", email: "m-14590915@moe-dl.edu.my", password: "skpkatya" },
-      { id: 45, name: "IZZ DASUKI BIN ABDULLAH", class: "4BL", email: "m-15118574@moe-dl.edu.my", password: "skpkdasuki" },
-      { id: 46, name: "JULIANIE UNGAN ANING", class: "4BL", email: "m-15102282@moe-dl.edu.my", password: "skpkjulianie" },
-      { id: 47, name: "SAYF AALI DZIQRULLAH BIN SAIFUL", class: "4BL", email: "m-14889610@moe-dl.edu.my", password: "skpksayf" },
-      { id: 48, name: "FELIXSON MOSES ANAK JONATHAN SAGA", class: "4BL", email: "felixsonmoses.jonathansaga@moe-dl.edu.my", password: "skpkfelixson" },
-      { id: 49, name: "CASSANDRA MARIA JEGA ANAK SEMALIE", class: "4BP", email: "m-15109024@moe-dl.edu.my", password: "skpkcassandra" },
-      { id: 50, name: "HUMPHREY GRUNNER ANAK ANDREW LUANG", class: "4BP", email: "m-14838659@moe-dl.edu.my", password: "skpkhumphrey" },
-      { id: 51, name: "LING YEW KIAT", class: "4BP", email: "m-15107852@moe-dl.edu.my", password: "skpkling" },
-      { id: 52, name: "MCLAIRE NYARINE ANAK STEPHEN", class: "4BP", email: "m-14590916@moe-dl.edu.my", password: "skpkmclaire" },
-      { id: 53, name: "THESSA GOH YAN AI", class: "4BP", email: "thessagohyanai@moe-dl.edu.my", password: "skpkthessa" },
-      { id: 54, name: "DAREN TING TIAN ZJUN", class: "5BD", email: "m-15187916@moe-dl.edu.my", password: "skpkdaren" },
-      { id: 55, name: "HAIDIEL SHAHRY BIN SOFIZAN", class: "5BD", email: "m-13341319@moe-dl.edu.my", password: "skpkhaidiel" },
-      { id: 56, name: "AMSYAR AZWAR BIN AL- MALIK HUSSEIN", class: "5BP", email: "m-14590936@moe-dl.edu.my", password: "skpkamsyar" },
-      { id: 57, name: "ARYAN WONG BIN MOHD ASWAD WONG", class: "5BP", email: "m-14314487@moe-dl.edu.my", password: "skpkaryan" },
-      { id: 58, name: "DIONYSIUS DELROY ANAK RAYMOND", class: "5BP", email: "m-14590937@moe-dl.edu.my", password: "skpkdionysius" },
-      { id: 59, name: "NURUL JANNAH BINTI MINHAD", class: "5BP", email: "m-14590938@moe-dl.edu.my", password: "skpknurul" },
-      { id: 60, name: "SITI ARISSA AFIQAH BINTI MOHD. ISWAN", class: "5BP", email: "m-14590939@moe-dl.edu.my", password: "skpkarissa" },
-      { id: 61, name: "WEE YEE TIEN", class: "5BP", email: "m-15094321@moe-dl.edu.my", password: "skpkwee" },
-      { id: 62, name: "ZAIM ZAHRAN BIN ZAINUDDIN", class: "5BP", email: "m-14183220@moe-dl.edu.my", password: "skpkzaim" },
-      { id: 63, name: "ATHENA KHO XUAN", class: "6BD", email: "m-13341314@moe-dl.edu.my", password: "skpkathena" },
-      { id: 64, name: "MIRZHAN HAMIZI BIN MOHAMMAD FAIZAL", class: "6BD", email: "m-13250092@moe-dl.edu.my", password: "skpkmirzhan" },
-      { id: 65, name: "EVANGELINE KAREN PAULUS", class: "6BP", email: "m-13676770@moe-dl.edu.my", password: "skpkavangeline" },
-      { id: 66, name: "IAN MCKENZIE ANAK MAT", class: "6BP", email: "m-13677411@moe-dl.edu.my", password: "skpkian" },
-      { id: 67, name: "IHYA ZAFIRAH BINTI HANAFIE", class: "6BP", email: "m-13680259@moe-dl.edu.my", password: "skpkihya" },
-      { id: 68, name: "JOSELINE JONG SHI YING", class: "6BP", email: "m-13919850@moe-dl.edu.my", password: "skpkjoselinejong" },
-      { id: 69, name: "MOHAMMAD IZZUANDIE BIN ABDULLAH", class: "6BP", email: "m-13677816@moe-dl.edu.my", password: "skpkizzuandie" },
-      { id: 70, name: "NUR AINA BINTI BARAHIM", class: "6BP", email: "m-13882842@moe-dl.edu.my", password: "skpkaina" },
-      { id: 71, name: "SURAIYA KHAIRINA BINTI KHAIRUL", class: "6BP", email: "m-14026036@moe-dl.edu.my", password: "skpksuraiya" },
-      { id: 72, name: "GRAHAM TEO TING HAN", class: "PRA", email: "m-251302313059@moe-dl.edu.my", password: "skpkgraham" },
-      { id: 73, name: "AAYAN HANS BIN ISMAILY", class: "PRA", email: "aayanhans.ismaily@moe-dl.edu.my", password: "skpkaayan" },
-      { id: 74, name: "DAISY TANG EE XI", class: "PRA", email: "daisytangeexi@moe-dl.edu.my", password: "skpkdaisy" },
-      { id: 75, name: "ISLEY NGIENG SEE EN", class: "PRA", email: "isleyngiengseeen@moe-dl.edu.my", password: "skpkisley" },
-      { id: 76, name: "MUHAMMAD YUNUS BIN MUHAMMAD HAZIM", class: "PRA", email: "muhammadyunus.muhammadhazim@moe-dl.edu.my", password: "skpkyunus" },
-      { id: 77, name: "NOAH ASHRAF BIN KHAIRUL NIZZAL", class: "PRA", email: "noahashraf.khairulnizzal@moe-dl.edu.my", password: "skpknoah" },
-      { id: 78, name: "ZARA BINTI MOHAMAD SUHAIMI", class: "PRA", email: "zara.mohamadsuhaimi@moe-dl.edu.my", password: "skpkzara" },
-      { id: 79, name: "ZIA ZHUFAIRAH BINTI ZAHIRUDDIN", class: "PRA", email: "ziazhufairah.zahiruddin@moe-dl.edu.my", password: "skpkzia" }
-    ];
+    // Data senarai murid kini diambil secara "live" dari Google Sheets (CSV)
+    let mockStudents = [];
+    const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSAGfWH36PmioZyxPamAqyf2Xm8gFeZiuiPhI5YEdTCf_EQnDFOxdGCeSZOZi8vwEtoxgnAHeReBv2M/pub?gid=147486476&single=true&output=csv";
+
+    Papa.parse(csvUrl, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: function(results) {
+        const data = results.data;
+        if (data && data.length > 0) {
+           mockStudents = data.map((row, index) => {
+              const keys = Object.keys(row);
+              // Fungsi pintar untuk mencari nama lajur (walaupun ejaan berubah sedikit di Google Sheets)
+              const findKey = (keywords) => keys.find(k => keywords.some(kw => k.toLowerCase().includes(kw)));
+              
+              const nameKey = findKey(['nama', 'name', 'murid']) || keys[0];
+              const classKey = findKey(['kelas', 'class', 'tahun']) || keys[1];
+              const emailKey = findKey(['emel', 'email', 'delima', 'id']) || keys[2];
+              const passKey = findKey(['kata', 'laluan', 'password', 'pass']) || keys[3];
+
+              return {
+                id: index + 1,
+                name: row[nameKey] ? row[nameKey].trim() : "-",
+                class: row[classKey] ? row[classKey].trim() : "-",
+                email: row[emailKey] ? row[emailKey].trim() : "-",
+                password: row[passKey] ? row[passKey].trim() : "-"
+              };
+           });
+        }
+        // Kemas kini paparan sekiranya guru sudah berada di dalam sistem
+        if (typeof isLoggedIn !== 'undefined' && isLoggedIn && typeof renderStudentList === 'function') {
+           renderStudentList();
+        }
+      },
+      error: function(err) {
+        console.error("Gagal memuat turun CSV:", err);
+        alert("Ralat memuat turun senarai dari Google Sheets. Sila pastikan pautan CSV masih aktif.");
+      }
+    });
 
     let isLoggedIn = false;
     let searchQuery = "";
@@ -217,6 +177,18 @@
     function renderStudentList() {
       const listContainer = document.getElementById('studentList');
       
+      // Tunjuk status memuat turun (loading) jika data CSV sedang diproses
+      if (mockStudents.length === 0) {
+        listContainer.innerHTML = `
+          <div class="text-center py-12 bg-white rounded-xl border border-gray-200 border-dashed text-gray-500">
+            <i data-lucide="loader-2" class="h-8 w-8 animate-spin mx-auto text-blue-500 mb-2"></i>
+            <p>Menyemak data terkini dari pangkalan data...</p>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
       const filteredStudents = mockStudents.filter(student => 
         student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         student.class.toLowerCase().includes(searchQuery.toLowerCase())
